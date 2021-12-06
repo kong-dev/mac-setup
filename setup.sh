@@ -40,6 +40,8 @@ defaults write com.apple.dock show-recents -bool false
 # Set the icon size of Dock items
 defaults write com.apple.dock tilesize -int 55
 
+# Enable the automatic update check
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 # Download newly available updates in background
@@ -51,6 +53,12 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true && \
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
 defaults write -g WebKitDeveloperExtras -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 for app in "Dock" \
 	"Finder" \
@@ -102,6 +110,7 @@ cask "alfred"
 cask "android-platform-tools"
 cask "android-studio"
 cask "baidunetdisk"
+cask "bob"
 cask "clashx-pro"
 cask "dash"
 cask "db-browser-for-sqlite"
@@ -176,12 +185,15 @@ git config --global core.autocrlf input
 git config --global core.excludesfile ~/.gitignore
 git config --global pull.rebase true
 git config --global push.followTags true
+git config --global format.pretty "%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
+git config --global log.abbrevCommit true
 git config --global http.postBuffer 524288000
 git config --global credential.helper osxkeychain
 git config --global alias.co "checkout"
-git config --global alias.lg "log --color --graph \
-    --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
-    --abbrev-commit"
+git config --global alias.lg "log --color --graph"
+git config --global alias.alias "config --get-regexp alias"
+git config --global alias.amend "commit --amend --reuse-message=HEAD"
+git config --global alias.rmtag "\!f() { git tag -d \$1 && git push origin :refs/tags/\$1 && git tag; }; f"
 
 # npm mirror
 npm i -g mirror-config-china --registry=https://registry.npm.taobao.org
