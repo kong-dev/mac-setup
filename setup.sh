@@ -133,6 +133,7 @@ cask "maczip"
 cask "neteasemusic"
 cask "omnidisksweeper"
 cask "parallels"
+cask "pd-runner"
 cask "postico"
 cask "postman"
 cask "pritunl"
@@ -195,6 +196,9 @@ git config --global alias.lg "log --color --graph"
 git config --global alias.alias "config --get-regexp alias"
 git config --global alias.amend "commit --amend --reuse-message=HEAD"
 git config --global alias.rmtag "\!f() { git tag -d \$1 && git push origin :refs/tags/\$1 && git tag; }; f"
+git config --global url."git@github.com:".insteadOf "gh:"
+git config --global --add url."git@github.com:".insteadOf "github:"
+git config --global url."git@gist.github.com:".insteadOf "gist:"
 
 # npm mirror
 npm i -g mirror-config-china --registry=https://registry.npm.taobao.org
