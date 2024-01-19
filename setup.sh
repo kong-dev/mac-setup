@@ -62,7 +62,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 for app in "Dock" \
 	"Finder" \
-	"SystemUIServer"; 
+	"SystemUIServer";
 do
 	killall "${app}" &> /dev/null
 done
@@ -82,21 +82,30 @@ tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
-tap "dteoh/sqa"  # for slowquitapps
+tap "buo/cask-upgrade"
+tap "golangci/tap"
+tap "hashicorp/tap"
+tap "kamilturek/python2"
+tap "bigwig-club/brew" # upic
 
 brew "curl"
+brew "fzf"
 brew "git"
 brew "go"
 brew "gradle"
 brew "jadx"
 brew "m-cli"
 brew "mas"
-brew "n"
+brew "nomad"
 brew "node"
 brew "openjdk@8"
 brew "openjdk@11"
+brew "openjdk@17"
+brew "pandoc"
 brew "php"
+brew "pnpm"
 brew "protobuf"
+brew "protoc-gen-go"
 brew "sqlcipher"
 brew "thefuck"
 brew "wget"
@@ -110,7 +119,9 @@ cask "alfred"
 cask "android-platform-tools"
 cask "android-studio"
 cask "baidunetdisk"
+cask "basictex"
 cask "bob"
+cask "calibre"
 cask "clashx-pro"
 cask "cleanshot"
 cask "dash"
@@ -118,29 +129,24 @@ cask "db-browser-for-sqlite"
 cask "dingtalk"
 cask "docker"
 cask "epic-games"
-cask "evernote"
-cask "gfxcardstatus"
+cask "font-hack-nerd-font"
 cask "godot"
 cask "google-chrome"
 cask "google-earth-pro"
-cask "hiddenbar"
 cask "iina"
 cask "iina-plus"
 cask "intellij-idea"
 cask "iterm2"
 cask "itsycal"
 cask "jd-gui"
-cask "keka"
-cask "keyboardholder"
 cask "maczip"
-cask "mark-text"
 cask "neteasemusic"
+cask "obsidian"
 cask "omnidisksweeper"
 cask "parallels"
-cask "pd-runner"
 cask "postico"
-cask "postman"
 cask "pritunl"
+cask "proxyman"
 cask "qbittorrent"
 cask "qlcolorcode"
 cask "qlimagesize"
@@ -150,20 +156,16 @@ cask "qlstephen"
 cask "qq"
 cask "quicklook-csv"
 cask "quicklook-json"
-# cask "epubquicklook"
-cask "webpquicklook"
-cask "slowquitapps"
-cask "sourcetree"
+cask "sketchbook"
 cask "steam"
 cask "sunloginclient"
+cask "tailscale"
 cask "telegram"
-cask "typora"
 cask "upic"
 cask "visual-studio-code"
+cask "webpquicklook"
 cask "wechat"
 cask "wechatwebdevtools"
-
-cask "font-hack-nerd-font"
 
 mas "Reeder", id: 1449412482
 mas "Xcode", id: 497799835
@@ -171,9 +173,10 @@ mas "Pages 文稿", id: 409201541
 mas "Numbers 表格", id: 409203825
 mas "Keynote 讲演", id: 409183694
 mas "iMovie 剪辑", id: 408981434
-# mas "库乐队", id: 682658836
 EOF
 brew cleanup -s
+
+pnpm install -g @antfu/ni
 
 # Uninstall Google Update
 ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/ksinstall --nuke
