@@ -108,6 +108,7 @@ brew "protobuf"
 brew "protoc-gen-go"
 brew "sqlcipher"
 brew "thefuck"
+brew "tldr"
 brew "wget"
 brew "yarn"
 brew "zsh-autosuggestions"
@@ -177,6 +178,7 @@ EOF
 brew cleanup -s
 
 pnpm install -g @antfu/ni
+pnpm install -g live-server
 
 # Uninstall Google Update
 ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/ksinstall --nuke
