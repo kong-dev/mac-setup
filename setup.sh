@@ -80,14 +80,13 @@ brew bundle --file=- <<EOF
 tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/cask"
-tap "homebrew/cask-versions"
-tap "homebrew/cask-fonts"
 tap "buo/cask-upgrade"
 tap "golangci/tap"
 tap "hashicorp/tap"
 tap "kamilturek/python2"
 tap "bigwig-club/brew" # upic
-tap "ivaquero/chinese" # messauto
+tap "brewforge/chinese" # messauto
+tap "brewforge/extras"
 
 brew "act"
 brew "bat"
